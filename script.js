@@ -111,7 +111,6 @@ if (contactForm) {
         emailjs.send('service_6idi0ko', 'template_xydq19t', {
             from_name: document.getElementById('name').value,
             from_email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
             message: document.getElementById('message').value,
         })
             .then(() => {

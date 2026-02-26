@@ -91,6 +91,23 @@ a {
     transform: scale(1.05);
 }
 
+/* Logo theme switching */
+.logo-light {
+    display: none;
+}
+
+.logo-dark {
+    display: block;
+}
+
+.light-mode .logo-light {
+    display: block;
+}
+
+.light-mode .logo-dark {
+    display: none;
+}
+
 .navbar.scrolled .nav-logo img {
     height: 45px;
 }
