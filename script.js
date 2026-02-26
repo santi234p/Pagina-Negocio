@@ -109,8 +109,8 @@ if (contactForm) {
         btn.style.opacity = '0.7';
 
         emailjs.send('service_6idi0ko', 'template_xydq19t', {
-            from_name: document.getElementById('name').value,
-            from_email: document.getElementById('email').value,
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
             message: document.getElementById('message').value,
         })
             .then(() => {
