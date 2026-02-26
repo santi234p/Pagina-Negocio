@@ -94,21 +94,69 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ── Contact form handler ──────────────────────────────────────
+// ── Contact form handler (EmailJS) ───────────────────────────
 const contactForm = document.getElementById('contactForm');
+
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
+
         const btn = contactForm.querySelector('.btn-submit');
         const origText = btn.innerHTML;
-        btn.innerHTML = '<span>✓ Mensaje Enviado</span>';
-        btn.style.background = 'linear-gradient(135deg, #2d8a4e, #4ade80)';
 
-        setTimeout(() => {
-            btn.innerHTML = origText;
-            btn.style.background = '';
-            contactForm.reset();
-        }, 3000);
+        btn.innerHTML = '<span>Enviando...</span>';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+
+        emailjs.send('service_6idi0ko', 'template_xydq19t', {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            message: document.getElementById('message').value,
+        })
+            .then(() => {
+                btn.innerHTML = '<span>✓ Mensaje Enviado</span>';
+                btn.style.background = 'linear-gradient(135deg, #2d8a4e, #4ade80)';
+                btn.style.opacity = '1';
+                contactForm.reset();
+                setTimeout(() => {
+                    btn.innerHTML = origText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 4000);
+            })
+            .catch(() => {
+                btn.innerHTML = '<span>✗ Error al enviar. Intenta de nuevo.</span>';
+                btn.style.background = 'linear-gradient(135deg, #8a2d2d, #f87171)';
+                btn.style.opacity = '1';
+                btn.disabled = false;
+                setTimeout(() => {
+                    btn.innerHTML = origText;
+                    btn.style.background = '';
+                }, 4000);
+            });
+    });
+}
+
+// ── Light / Dark theme toggle ─────────────────────────────────
+const themeToggle = document.getElementById('themeToggle');
+
+const applyTheme = (theme) => {
+    if (theme === 'light') {
+        document.body.classList.add('light-mode');
+    } else {
+        document.body.classList.remove('light-mode');
+    }
+};
+
+// Load saved preference (default: dark)
+const savedTheme = localStorage.getItem('sd-theme') || 'dark';
+applyTheme(savedTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isLight = document.body.classList.toggle('light-mode');
+        localStorage.setItem('sd-theme', isLight ? 'light' : 'dark');
     });
 }
 

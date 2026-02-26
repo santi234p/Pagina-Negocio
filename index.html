@@ -24,11 +24,25 @@
             <a href="#" class="nav-logo">
                 <img src="imagenes/Logo.jpeg" alt="Santiér Doré Logo">
             </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                    <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#productos" class="nav-link">Productos</a></li>
                 <li><a href="#ingredientes" class="nav-link">Ingredientes</a></li>
@@ -284,7 +298,7 @@
                     <div class="contact-details">
                         <div class="contact-item">
                             <span class="contact-icon">📧</span>
-                            <a href="mailto:kevin256pg@gmail.com">kevin256pg@gmail.com</a>
+                            <a href="mailto:santierdore@gmail.com">santierdore@gmail.com</a>
                         </div>
                         <div class="contact-item">
                             <span class="contact-icon">📞</span>
@@ -297,26 +311,18 @@
                     </div>
                 </div>
                 <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/kevin256pg@gmail.com"
-                        method="POST">
-                        <!-- FormSubmit config -->
-                        <input type="hidden" name="_subject" value="Nuevo mensaje desde Santiér Doré">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="text" name="_honey" style="display:none">
-
+                    <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <input type="text" name="nombre" id="name" placeholder="Tu nombre" required>
+                            <input type="text" id="name" placeholder="Tu nombre" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required>
+                            <input type="email" id="email" placeholder="Tu correo electrónico" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="telefono" id="phone" placeholder="Tu número telefónico" required>
+                            <input type="tel" id="phone" placeholder="Tu número telefónico" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="mensaje" id="message" rows="4" placeholder="Tu mensaje" required></textarea>
+                            <textarea id="message" rows="4" placeholder="Tu mensaje" required></textarea>
                         </div>
                         <button type="submit" class="btn-submit">
                             <span>Enviar Mensaje</span>
@@ -339,6 +345,10 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init("XVoOvcoBWe3BDY-rh");
+    </script>
     <script src="script.js"></script>
 </body>
 

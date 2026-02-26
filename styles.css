@@ -163,6 +163,58 @@ a {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Nav actions container */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: none;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--gold);
+    background: rgba(201, 168, 76, 0.08);
+}
+
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--gold);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Dark mode (default): show moon, hide sun */
+.icon-sun {
+    display: none;
+}
+
+.icon-moon {
+    display: block;
+}
+
+/* Light mode: show sun, hide moon */
+.light-mode .icon-sun {
+    display: block;
+}
+
+.light-mode .icon-moon {
+    display: none;
+}
+
 /* ── HERO SECTION ──────────────────────────────────────────────── */
 .hero {
     position: relative;
@@ -1126,5 +1178,262 @@ a {
 
     .ingredient-card {
         padding: 2rem 1rem;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   Warm ivory/cream palette preserving gold accents
+   ═══════════════════════════════════════════════════════════════ */
+
+body.light-mode {
+    background-color: #faf8f3;
+    color: #1a1a1a;
+}
+
+/* Navbar */
+.light-mode .navbar.scrolled {
+    background-color: rgba(250, 248, 243, 0.95);
+    border-bottom-color: rgba(201, 168, 76, 0.2);
+}
+
+.light-mode .nav-link {
+    color: #555;
+}
+
+.light-mode .nav-link:hover {
+    color: var(--gold-dark);
+}
+
+.light-mode .nav-toggle span {
+    background: var(--gold-dark);
+}
+
+.light-mode .theme-toggle {
+    border-color: rgba(168, 136, 46, 0.35);
+}
+
+.light-mode .theme-icon {
+    color: var(--gold-dark);
+}
+
+/* Hero */
+.light-mode .hero {
+    background: radial-gradient(ellipse at 30% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 20%, rgba(201, 168, 76, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #f5f0e6, #faf8f3);
+}
+
+.light-mode .hero-title .line-1 {
+    color: #2a2015;
+    -webkit-text-fill-color: #2a2015;
+}
+
+.light-mode .hero-subtitle {
+    color: #666;
+}
+
+.light-mode .hero-particle {
+    background: var(--gold-dark);
+}
+
+.light-mode .scroll-line {
+    background: linear-gradient(to bottom, var(--gold-dark), transparent);
+}
+
+/* Sections */
+.light-mode .about-section {
+    background: linear-gradient(180deg, #faf8f3 0%, #f5f0e6 50%, #faf8f3 100%);
+}
+
+.light-mode .section-title {
+    color: #1a1a1a;
+}
+
+.light-mode .about-text {
+    color: #555;
+}
+
+.light-mode .about-text strong {
+    color: var(--gold-dark);
+}
+
+.light-mode .frame-corner {
+    border-color: var(--gold-dark);
+}
+
+/* Products */
+.light-mode .products-section {
+    background: #f5f0e6;
+}
+
+.light-mode .products-section::before {
+    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.light-mode .product-card {
+    background: linear-gradient(145deg, #fff, #faf8f3);
+    border-color: rgba(201, 168, 76, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .product-card:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1),
+        0 0 30px rgba(201, 168, 76, 0.08);
+}
+
+.light-mode .product-name {
+    color: var(--gold-dark);
+}
+
+.light-mode .product-desc {
+    color: #666;
+}
+
+.light-mode .product-image {
+    filter: brightness(0.95) contrast(1.02);
+}
+
+/* Ingredients */
+.light-mode .ingredients-section {
+    background: #f0ebe0;
+}
+
+.light-mode .ingredients-section::before {
+    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.light-mode .ingredient-card {
+    background: linear-gradient(145deg, #fff, #faf8f3);
+    border-color: rgba(201, 168, 76, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.light-mode .ingredient-card:hover {
+    border-color: rgba(201, 168, 76, 0.35);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08),
+        0 0 25px rgba(201, 168, 76, 0.06);
+}
+
+.light-mode .ingredient-name {
+    color: #2a2015;
+}
+
+.light-mode .ingredient-desc {
+    color: #666;
+}
+
+.light-mode .ingredient-icon {
+    color: var(--gold-dark);
+}
+
+.light-mode .showcase-image {
+    filter: brightness(0.95) contrast(1.02) saturate(1);
+}
+
+.light-mode .showcase-image-wrapper::after {
+    background: linear-gradient(180deg,
+            rgba(245, 240, 230, 0.3) 0%,
+            transparent 30%,
+            transparent 70%,
+            rgba(245, 240, 230, 0.6) 100%);
+}
+
+/* Buy section */
+.light-mode .buy-section {
+    background: linear-gradient(180deg, #faf8f3 0%, #f5f0e6 100%);
+}
+
+.light-mode .buy-card {
+    background: #fff;
+    border-color: rgba(201, 168, 76, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .buy-card:hover {
+    border-color: rgba(201, 168, 76, 0.35);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .buy-card-title {
+    color: #2a2015;
+}
+
+.light-mode .buy-card-text {
+    color: #666;
+}
+
+.light-mode .buy-card-icon-svg {
+    color: var(--gold-dark);
+}
+
+.light-mode .buy-card-link {
+    color: var(--gold-dark);
+}
+
+/* Contact */
+.light-mode .contact-section {
+    background: #f0ebe0;
+}
+
+.light-mode .contact-section::before {
+    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+}
+
+.light-mode .contact-text {
+    color: #555;
+}
+
+.light-mode .contact-item {
+    color: #555;
+}
+
+.light-mode .contact-item a {
+    color: #555;
+}
+
+.light-mode .contact-item a:hover {
+    color: var(--gold-dark);
+}
+
+.light-mode .form-group input,
+.light-mode .form-group textarea {
+    background: #fff;
+    border-color: rgba(201, 168, 76, 0.2);
+    color: #1a1a1a;
+}
+
+.light-mode .form-group input::placeholder,
+.light-mode .form-group textarea::placeholder {
+    color: #999;
+}
+
+.light-mode .form-group input:focus,
+.light-mode .form-group textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+.light-mode .btn-submit {
+    color: #fff;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+}
+
+/* Footer */
+.light-mode .footer {
+    background: #2a2015;
+}
+
+
+
+@media (max-width: 768px) {
+    .light-mode .nav-menu {
+        background: rgba(250, 248, 243, 0.98);
+        border-left-color: rgba(201, 168, 76, 0.2);
+    }
+
+    .light-mode .nav-link {
+        color: #333;
     }
 }
